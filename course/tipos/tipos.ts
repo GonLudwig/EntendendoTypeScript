@@ -100,3 +100,73 @@ usuario = {
     idade: 31,
     nome: 'maria'
 }
+
+// Desafio
+
+// Alias
+type Funcionario = {
+    supervisores: string[],
+    baterPonto: (numero: number) => string
+}
+
+let funcionario: Funcionario = {
+    supervisores: ['Ana', 'Fernamdo'],
+    baterPonto: function (num) {
+        if (num <= 8) {
+            return 'Ponto normal'
+        }
+        return 'Fora do Horario'
+    }
+}
+
+console.log(funcionario.supervisores)
+console.log(funcionario.baterPonto(8))
+console.log(funcionario.baterPonto(9))
+
+// Unio Types
+
+let nota: number | string = 10
+console.log(nota)
+nota = '10'
+console.log(nota)
+
+// Return Never
+function falha(msg: string): never {
+    throw new Error(msg)
+}
+
+// Null value
+
+let altura = 12
+// altura = null
+
+let alturaOpcional: number | null = 12
+alturaOpcional = null
+
+// Desafio js to ts
+type ContaBancaria = {
+    saldo: number,
+    depositar: (valor: number) => void
+}
+
+type Correntista = {
+    nome: string,
+    contaBancaria: ContaBancaria,
+    contatos: string[]
+}
+
+let contaBancaria: ContaBancaria = {
+    saldo: 3456,
+    depositar(valor) {
+        this.saldo += valor
+    }
+}
+ 
+let correntista: Correntista = {
+    nome: 'Ana Silva',
+    contaBancaria: contaBancaria,
+    contatos: ['34567890', '98765432']
+}
+ 
+correntista.contaBancaria.depositar(3000)
+console.log(correntista)
