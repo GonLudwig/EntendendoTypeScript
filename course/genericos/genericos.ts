@@ -97,7 +97,7 @@ class DiffDates extends AbstractOperacaoBinaria<Date, number>
 
 // Desafio
 
-class Fila<T>
+class Fila<T extends number | string>
 {
     private fila: Array<T>
 
@@ -133,3 +133,53 @@ fila.entrar('Rafel')
 fila.imprimir()
 console.log(fila.proximo())
 console.log(fila.proximo())
+
+const filaNumerica = new Fila<number>(1,2,3)
+const filaMista = new Fila<number | string>(1, '2', 3)
+
+type Par<C, V> = {
+    chave: C, valor: V
+}
+class Mapa<C, V>
+{
+    private mapa: Array<Par<C, V>> = new Array<Par<C, V>>()
+
+    obter(chave: C): Par<C, V> | null
+    {
+        const resultado = this.mapa
+            ?.filter(element => element.chave === chave)
+        return resultado ? resultado[0] : null
+    }
+
+    colocar(mapa: Par<C, V> ): void
+    {
+        const encontrar = this.obter(mapa.chave)
+        if (encontrar) {
+            encontrar.valor = mapa.valor
+        } else{
+            this.mapa?.push(mapa)
+        }
+    }
+
+    limpar(): void
+    {
+        this.mapa = new Array<Par<C, V>>()
+    }
+
+    imprimir(): void
+    {
+        console.log(this.mapa)
+    }
+
+}
+
+const maps = new Mapa<number, string>()
+maps.colocar({ chave: 1, valor: 'Pedro' })
+maps.colocar({ chave: 2, valor: 'Rebeca' })
+maps.colocar({ chave: 3, valor: 'Maria' })
+maps.colocar({ chave: 1, valor: 'Gustavo' })
+
+console.log(maps.obter(2))
+maps.imprimir()
+maps.limpar()
+maps.imprimir()
