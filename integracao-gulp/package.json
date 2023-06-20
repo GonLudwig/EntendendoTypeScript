@@ -1,0 +1,22 @@
+{
+  "name": "integracao-gulp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gulp"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^5.1.3"
+  },
+  "devDependencies": {
+    "browserify": "^17.0.0",
+    "del": "^7.0.0",
+    "gulp": "^4.0.2",
+    "tsify": "^5.0.4",
+    "vinyl-source-stream": "^2.0.0"
+  }
+}

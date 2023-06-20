@@ -9,4 +9,4 @@ services:
     ports:
       - '9001:3000'
     volumes:
-      - ./course:/usr/src
+      - ./integracao-gulp:/usr/src
